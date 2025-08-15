@@ -1,5 +1,6 @@
 # --- STAGE 1: Build the application ---
-FROM maven:3.9-eclipse-temurin-21-focal AS build
+# Use a Maven image that includes JDK 17 to build the project
+FROM maven:3.9-eclipse-temurin-17-focal AS build
 
 # Set the working directory
 WORKDIR /app
@@ -15,7 +16,8 @@ COPY src ./src
 RUN mvn package -DskipTests
 
 # --- STAGE 2: Create the final, lightweight runtime image ---
-FROM openjdk:21-slim
+# Use a slim JRE image which is much smaller than a full JDK
+FROM openjdk:17-slim
 
 # Set the working directory
 WORKDIR /app
