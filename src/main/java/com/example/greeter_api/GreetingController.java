@@ -13,7 +13,7 @@ public class GreetingController {
     // This annotation is very important for now. It allows our Angular app
     // (which will run on localhost:4200) to talk to this server (running on localhost:8080).
     // This is a security feature in browsers called CORS.
-    @CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 
     // @GetMapping maps HTTP GET requests for "/api/greet" to this method.
     @GetMapping("/api/greet")
